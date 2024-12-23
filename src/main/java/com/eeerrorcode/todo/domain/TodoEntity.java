@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.*;
 
-@Entity
+@Entity(name = "todo")
 @Table(name = "tbl_todo")
 @Getter
 @Setter
