@@ -11,6 +11,7 @@ import com.eeerrorcode.todo.service.TodoService;
 import lombok.extern.log4j.Log4j2;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
@@ -22,8 +23,6 @@ public class TodoController {
   @GetMapping("todos")
   public String list(Model model) {
     model.addAttribute("todoList", service.list());
-    model.addAttribute("test", "model test");
-
     return "todo-list";
   }
 
@@ -34,4 +33,17 @@ public class TodoController {
     return "redirect:todos";
   }
   
+  @RequestMapping("todos/remove")
+  public String remove(Long id) {
+    log.info(id);
+    service.remove(id);
+    return "redirect:/todos";
+  }
+  
+  @RequestMapping("todos/modify")
+  public String modify(Long id) {
+    log.info(id);
+    service.modify(id);
+    return "redirect:/todos";
+  }
 }
